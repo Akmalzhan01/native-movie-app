@@ -1,5 +1,4 @@
-import Home from "./src/Home";
-
+import AppNavigation from "./src/navigations/app.navigation";
 import { NativeWindStyleSheet } from "nativewind";
 
 NativeWindStyleSheet.setOutput({
@@ -9,6 +8,6 @@ NativeWindStyleSheet.setOutput({
 
 export default function App() {
   return (
-    <Home />
+    <AppNavigation />
   );
 }
