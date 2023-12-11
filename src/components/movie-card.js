@@ -10,7 +10,7 @@ export default function MovieCard({item}) {
   const navigation = useNavigation()
 
   return (
-    <TouchableWithoutFeedback onPress={() => navigation.navigate("Movie", item)}>
+    <TouchableWithoutFeedback onPress={() => navigation.navigate("Movie", item.id)}>
       <Image source={{uri: image500(item.poster_path)}} style={{width: width * 0.5, height: height * 0.4}}
       className="rounded-3xl" />
     </TouchableWithoutFeedback>
