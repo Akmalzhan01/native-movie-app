@@ -6,6 +6,7 @@ export const trendingMovie = `${base_url}/trending/movie/day?api_key=${api_key}`
 export const upComingMovie = `${base_url}/movie/upcoming?api_key=${api_key}`
 export const topRatedMovie = `${base_url}/movie/top_rated?api_key=${api_key}`
 export const popularMovie = `${base_url}/movie/popular?api_key=${api_key}`
+export const searchMovie = `${base_url}/search/movie?api_key=${api_key}`
 
 export const movieDetail = id => `${base_url}/movie/${id}?api_key=${api_key}`;
 export const movieCredits = id => `${base_url}/movie/${id}/credits?api_key=${api_key}`;
@@ -13,7 +14,6 @@ export const movieSimilar = id => `${base_url}/movie/${id}/similar?api_key=${api
 
 export const personDetail = id => `${base_url}/person/${id}?api_key=${api_key}`
 export const personMovie = id => `${base_url}/person/${id}/movie_credits?api_key=${api_key}`
-export const searchMovie = id => `${base_url}/search/movie?api_key=${api_key}`
 
 
 

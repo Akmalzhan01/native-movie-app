@@ -1,10 +1,13 @@
-import { TextInput, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, ScrollView, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { XMarkIcon } from "react-native-heroicons/outline"
 import { useNavigation } from '@react-navigation/native'
 import { useCallback, useState } from 'react'
-import {fetchSearchMovie} from "../api/index"
+import { fetchSearchMovie, image185 } from "../api/index"
 import { debounce } from 'lodash'
+import Loader from "../components/Loader"
+
+const {width, height} = Dimensions.get("window")
 
 export default function Search() {
   const [isLoading, setIsLoading] = useState(false)
@@ -17,7 +20,6 @@ export default function Search() {
       setIsLoading(true)
       fetchSearchMovie({
         query: searchText,
-        include_adult: false,
         page: 1
       }).then(data => {
         setIsLoading(false)
@@ -45,6 +47,36 @@ export default function Search() {
           <XMarkIcon color={"white"} size={25} strokeWidth={3} />
         </TouchableOpacity>
       </View>
+      {isLoading ? (
+        <Loader />
+      ) : results.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 15 }}
+          className="space-y-3"
+        >
+          <Text className="text-white font-semibold ml-1">
+            Results({results.length})
+          </Text>
+          <View className="flex-row justify-between flex-wrap">
+            {results?.map(item => (
+              <TouchableWithoutFeedback key={item.id}>
+                <View className="space-y-2 mb-4">
+                  <Image 
+                  source={{uri: image185(item.poster_path)}} 
+                  className="rounded-3xl"
+                  style={{width: width * 0.44, height: height * 0.3}} />
+                  <Text className="text-gray-300 ml-1">
+                    {item.title.length > 22 
+                    ? item.title.slice(0, 12) + "..."
+                  : item.title}
+                  </Text>
+                </View>
+              </TouchableWithoutFeedback>
+            ))}
+          </View>
+        </ScrollView>
+      ) : <Text className="text-center text-white">No result</Text>}
     </SafeAreaView>
   )
 }
