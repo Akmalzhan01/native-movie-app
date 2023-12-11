@@ -32,19 +32,16 @@ export default function Movie() {
     const data = await fetchMovieDetail(id);
     setMovie(data)
     setIsLoading(false)
-    console.log("Movie Details", data);
   }
 
   const getMovieCredits = async () => {
     const data = await fetchMovieCredits(id);
     setCast(data.cast)
-    console.log("Movie Credits", data);
   }
 
   const getMovieSimilar = async () => {
     const data = await fetchMovieSimilar(id);
     setSimilar(data.results)
-    console.log("Movie Similar", data);
   }
 
 
