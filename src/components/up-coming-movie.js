@@ -9,7 +9,7 @@ export default function UpComingMovie({ upComing, title }) {
   const navigation = useNavigation()
   return (
     <View className="mb-8 spacey-4">
-      <Text className="text-lg text-yellow-500 text-center font-semibold mb-3">{title}</Text>
+      <Text className="text-lg text-white font-semibold mb-3">{title}</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

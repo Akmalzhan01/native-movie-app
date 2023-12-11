@@ -7,6 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { fetchMovieCredits, fetchMovieDetail, fetchMovieSimilar, image500 } from '../api';
 import Loader from "../components/Loader"
 import { LinearGradient } from 'expo-linear-gradient';
+import Cast from "../components/cast"
+import UpComingMovie from '../components/up-coming-movie';
 
 const { width, height } = Dimensions.get("window")
 
@@ -41,7 +43,7 @@ export default function Movie() {
 
   const getMovieSimilar = async () => {
     const data = await fetchMovieSimilar(id);
-    setSimilar(similar.results)
+    setSimilar(data.results)
     console.log("Movie Similar", data);
   }
 
@@ -93,8 +95,10 @@ export default function Movie() {
             ))}
           </View>
         </View>
-        <Text className="text-neutral-400 mx-4 tracking-wide">{movie?.overview}</Text>
+        <Text className="text-neutral-400 mx-4 tracking-wide mt-2">{movie?.overview}</Text>
       </View>
+      {movie?.id && cast.length > 0 && <Cast cast={cast} />}
+      {movie?.id && similar.length > 0 && <UpComingMovie upComing={similar} title={"Similar movies"} />}
     </ScrollView>
   )
 }

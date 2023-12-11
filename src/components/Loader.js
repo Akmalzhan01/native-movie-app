@@ -8,7 +8,7 @@ export default function Loader() {
       visible={true}
       overlatColor="#FDF6AA"
       source={require("../../assets/Loader.json")}
-      animationStyle={styles.lottie}
+      animationStyle={styles.lotties}
       speed={1}
     ></AnimatedLoader>
   )
@@ -17,7 +17,7 @@ export default function Loader() {
 
 
 const styles = StyleSheet.create({
-  lottie: {
+  lotties: {
     width: 100,
     height: 100
   }
